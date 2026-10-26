@@ -1,0 +1,29 @@
+{
+  "name": "llm-to-agents",
+  "version": "0.1.0",
+  "description": "Building production-grade AI agents from scratch using LangChain, LangGraph, and LangSmith in modern JavaScript",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "langchain",
+    "langgraph",
+    "langsmith",
+    "agents",
+    "javascript",
+    "es-modules"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/core": "^0.3.38",
+    "@langchain/google-genai": "^0.1.8",
+    "@langchain/langgraph": "^0.2.45",
+    "dotenv": "^16.4.7",
+    "langchain": "^0.3.15",
+    "langsmith": "^0.3.8"
+  }
+}

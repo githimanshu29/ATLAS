@@ -1,0 +1,65 @@
+# -----------------------------------------------------------------------------
+# JavaScript / Node.js Environment
+# -----------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
+dist/
+build/
+coverage/
+.nyc_output/
+
+# -----------------------------------------------------------------------------
+# Environment Variables & Secrets (LangSmith, OpenAI, Anthropic API Keys)
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+secrets.json
+credentials.json
+
+# -----------------------------------------------------------------------------
+# LangChain, LangGraph & LangSmith Traces & Cache
+# -----------------------------------------------------------------------------
+.langchain/
+.langsmith/
+.cache/
+cache/
+*.sqlite
+*.sqlite3
+*.db
+local_checkpoints/
+runs/
+logs/
+*.log
+
+# -----------------------------------------------------------------------------
+# Agent, Instructions, Explanations & Problems (Local Folders / Working Scratch)
+# -----------------------------------------------------------------------------
+
+instructions.md
+Agent_1st.md
+explanation/
+explanation/
+problem/
+problems/
+
+# -----------------------------------------------------------------------------
+# IDE & Editor Settings
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# -----------------------------------------------------------------------------
+# Operating System Artifacts
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
