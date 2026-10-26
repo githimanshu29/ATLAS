@@ -45,9 +45,14 @@ logs/
 instructions.md
 Agent_1st.md
 explanation/
-explanation/
 problem/
 problems/
+
+# Local helpers, test scripts & scratch
+powershell.cmd
+powershell.*
+test*.js
+scratch/
 
 # -----------------------------------------------------------------------------
 # IDE & Editor Settings
