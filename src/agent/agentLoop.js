@@ -23,7 +23,11 @@ const DEFAULT_MAX_ITERATIONS = 5;
  * @returns {Promise<Object>} Execution result containing status, answer, and metrics
  */
 export async function runAgent(userQuestion, options = {}) {
-  const maxIterations = options.maxIterations || DEFAULT_MAX_ITERATIONS;
+  const rawMaxIterations = options.maxIterations !== undefined ? options.maxIterations : DEFAULT_MAX_ITERATIONS;
+  if (!Number.isInteger(rawMaxIterations) || rawMaxIterations <= 0) {
+    throw new TypeError("maxIterations must be a positive integer.");
+  }
+  const maxIterations = rawMaxIterations;
   const model = options.model || defaultModel;
 
   // Bind tools to the chat model so Gemini knows their signatures and schemas
@@ -71,12 +75,24 @@ export async function runAgent(userQuestion, options = {}) {
     // Case A: Model produced final answer (no tool calls requested)
     if (toolCalls.length === 0) {
       console.log("\nLLM DECISION:\nNo more tool calls.");
+
+      const answerText = typeof response.content === "string" ? response.content.trim() : "";
+      if (!answerText) {
+        console.error("\nAGENT STATUS:\nFAILED\n\nTERMINATION REASON:\nModel returned an empty final answer.");
+        return {
+          status: "FAILED",
+          error: "Model completed execution without providing a non-empty final answer.",
+          iterations: iteration,
+          messages,
+        };
+      }
+
       console.log("\nAGENT STATUS:\nCOMPLETED");
-      console.log(`\nFINAL ANSWER:\n${response.content}`);
+      console.log(`\nFINAL ANSWER:\n${answerText}`);
 
       return {
         status: "COMPLETED",
-        answer: response.content,
+        answer: answerText,
         iterations: iteration,
         messages,
       };
