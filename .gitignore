@@ -41,6 +41,7 @@ logs/
 # Agent, Instructions, Explanations & Problems (Local Folders / Working Scratch)
 # -----------------------------------------------------------------------------
 
+
 instructions.md
 Agent_1st.md
 explanation/
